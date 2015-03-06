@@ -1,5 +1,7 @@
 FROM ubuntu:lucid
 
+RUN mkdir -p /tmp
+
 ADD build /tmp/build
 ADD assets /tmp/assets
 
@@ -15,7 +17,6 @@ RUN bash \
   cd yaml-0.1.6; \
   ./configure; \
   make; \
-  make install; \
-  rm yaml-0.1.6.tar.gz
+  make install
 
 RUN rm -rf /tmp/*
