@@ -140,6 +140,17 @@ deb http://security.ubuntu.com/ubuntu $DISTRIB_CODENAME-security main universe m
 deb http://ppa.launchpad.net/git-core/ppa/ubuntu $DISTRIB_CODENAME main
 EOS
 
+cat > /etc/dpkg/dpkg.cfg.d/01_nodoc <<EOS
+path-exclude /usr/share/doc/*
+path-include /usr/share/doc/*/copyright
+path-exclude /usr/share/man/*
+path-exclude /usr/share/groff/*
+path-exclude /usr/share/info/*
+# lintian stuff is small, but really unnecessary
+path-exclude /usr/share/lintian/*
+path-exclude /usr/share/linda/*
+EOS
+
 # install gpgv so we can update
 apt_get update
 apt_get install gpgv

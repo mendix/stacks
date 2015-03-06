@@ -15,6 +15,7 @@ RUN bash \
   cd yaml-0.1.6; \
   ./configure; \
   make; \
-  make install
+  make install; \
+  rm yaml-0.1.6.tar.gz
 
 RUN rm -rf /tmp/*
