@@ -18,7 +18,7 @@ fi
 upload_s3() {
   for i in $(seq 1 $S3_RETRIES); do
     md5_hash_before=$(bash -c "$MD5_CMD")
-    ./upload_to_s3 $STACK | tee etag
+    ./bin/upload_to_s3 $STACK | tee etag
     md5_hash_after=$(cat etag)
 
     if [ "$md5_hash_before" != "$md5_hash_after" ]; then
@@ -52,5 +52,5 @@ cleanup() {
 trap cleanup EXIT
 
 upload_s3
-./docker_push.sh $STACK
+./bin/docker_push.sh $STACK
 create_receipt

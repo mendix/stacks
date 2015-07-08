@@ -6,7 +6,7 @@ This repo contains scripts for creating warden root filesystems.
 
 # Dependencies
 
-* Vagrant
+* Docker
 * Ruby 1.9.3-p545 or higher
 
 # Adding a new package to the rootfs
@@ -37,10 +37,11 @@ export DOCKERHUB_USERNAME=your-docker-hub-name
 export DOCKERHUB_PASSWORD=your-docker-password
 export DOCKERHUB_EMAIL=you@dockerhub-email.com
 
-make upload_cslinuxfs2
+bundle install
+./bin/upload_stack
 ```
 
-This will use the `cflinuxfs2/rootfs.tgz` file created with `make` and upload it to S3 and the Docker Hub. It will also create a receipt file named `cflinuxfs2/cflinuxfs2_receipt` that contains the SHA sum of the rootfs, the Docker image ID, and the ETag value from S3.
+This will use the `cflinuxfs2.tar.gz` file created with `make` and upload it to S3 and the Docker Hub. It will also create a receipt file named `cflinuxfs2/cflinuxfs2_receipt` that contains the SHA sum of the rootfs, the Docker image ID, and the ETag value from S3.
 
 This will remove the `cflinuxfs2/rootfs.tgz` file, but the tarball `cflinuxfs2.tar.gz` will remain.
 
