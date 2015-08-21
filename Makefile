@@ -2,8 +2,8 @@ all: cflinuxfs2.tar.gz
 
 
 cflinuxfs2.cid: cflinuxfs2/Dockerfile
-	docker build --no-cache -t cloudfoundry/cflinuxfs2 cflinuxfs2
-	docker run --cidfile=cflinuxfs2.cid cloudfoundry/cflinuxfs2 dpkg -l | tee cflinuxfs2/cflinuxfs2_dpkg_l.out
+	docker build --no-cache -t cloudfoundry/cflinuxfs2:v208 cflinuxfs2
+	docker run --cidfile=cflinuxfs2.cid cloudfoundry/cflinuxfs2:v208 dpkg -l | tee cflinuxfs2/cflinuxfs2_dpkg_l.out
 
 cflinuxfs2.tar: cflinuxfs2.cid
 	mkdir -p tmp
