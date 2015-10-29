@@ -151,3 +151,16 @@ apt_get install $packages ubuntu-minimal
 apt-get clean
 
 rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/*
+
+# mendix
+mkdir -p /usr/local/share/mx-buildpack/
+
+mkdir -p /usr/share/man/man1/
+wget -O /usr/local/share/mx-buildpack/oracle-java7u80-jdk_7u80_amd64.deb http://cdn.mendix.com/mx-buildpack/oracle-java7u80-jdk_7u80_amd64.deb
+dpkg -i /usr/local/share/mx-buildpack/oracle-java7u80-jdk_7u80_amd64.deb
+
+wget -O /usr/local/share/mx-buildpack/oracle-java8u45-jdk_8u45_amd64.deb http://cdn.mendix.com/mx-buildpack/oracle-java8u45-jdk_8u45_amd64.deb
+dpkg -i /usr/local/share/mx-buildpack/oracle-java8u45-jdk_8u45_amd64.deb
+
+git clone --bare https://github.com/mendix/runtimes.git /usr/local/share/mendix-runtimes.git
+# and then later: git --git-dir=runtimes.git --work-tree=a-runtime checkout 5.20.0 -f
